@@ -1,23 +1,16 @@
-// template code from tutorial project file.
-// testing compilation
+// adapted code from tutorial project file.
+// testing basic software
 
-// the following code is from the nesfab tutorial:
-
-// Variables:
-vars /sound
-    UU pitch = 1000
-
-// Sends 'pitch' variable to the APU, emitting sound:
-fn play_sound()
-    {$4015}(%100)
-    {$4008}($FF)
-    {$400A}(pitch.a)
-    {$400B}(pitch.b & %111)
-
-// Game loop:
 mode main()
-    {PPUCTRL}(%10000000)
-    while true
-        pitch *= 1.01
-        play_sound()
-        nmi
+   // set the palette:
+   palette = example_palette
+   ppu_upload_palette()
+
+   // loop infinitely:
+   while true
+   
+// define the tileset (CHR):
+chrrom
+   file(fmt, "tiles.png")
+
+
